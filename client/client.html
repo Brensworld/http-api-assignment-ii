@@ -31,12 +31,16 @@
       }
 
       
+      //responses in body for when a body message is valid
+      //showing users when using "GET" for /getUsers
       if(response.status===200 && parseResponse){ 
         let obj=await response.json();
         console.log(obj);
         let jsonString = JSON.stringify(obj.users);
         content.innerHTML+=`<p>${jsonString}</p>`;
-      }else if(response.status===201 || response.status===400 || (response.status===404 && parseResponse)){
+      }
+      else if(response.status===201 || response.status===400 || (response.status===404 && parseResponse)){
+        //displaying message for created user, bad request, or not found with "GET"
         let obj=await response.json();
         console.log(obj);
         let jsonString = JSON.stringify(obj.message);

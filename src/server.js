@@ -5,6 +5,7 @@ const jsonHandler = require('./jsonHandler.js');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
+//for when users are being added/updated, making sure user data is valid
 const parseBody = (request, response) => {
   const body = [];
 
