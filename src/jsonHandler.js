@@ -10,7 +10,7 @@ const respondJSON = (request, response, status, object) => {
 
   response.writeHead(status, headers);
 
-  //204 is an update, has no body message
+  // 204 is an update, has no body message
   if (request.method !== 'HEAD' && status !== 204) {
     response.write(content);
   }
@@ -27,23 +27,23 @@ const getUsers = (request, response) => {
 };
 
 const addUser = (request, response) => {
-  //defaulting to missing data
+  // defaulting to missing data
   const responseJSON = {
     message: 'Name and age are both required',
   };
 
   const { name, age } = request.body;
 
-  //checking for missing data
+  // checking for missing data
   if (!name || !age) {
     responseJSON.id = 'missingParams';
     return respondJSON(request, response, 400, responseJSON);
   }
 
-  //data is valid by this point, defaulting to update
+  // data is valid by this point, defaulting to update
   let responseCode = 204;
 
-  //checking for a new user
+  // checking for a new user
   if (!users[name]) {
     responseCode = 201;
     users[name] = {
